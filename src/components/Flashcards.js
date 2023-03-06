@@ -6,9 +6,7 @@ import icone_erro from "./components/assets/icone_erro.png";
 import icone_quase from "./components/assets/icone_quase.png";
 import seta_play from "./components/assets/seta_play.png";
 import seta_virar from "./components/assets/seta_virar.png";
-import icone_certo from "../assets/icone_certo.png"
-import icone_quase from "../assets/icone_quase.png"
-import icone_erro from "../assets/icone_erro.png"
+
 
 
 export default function Flashcards(c){
@@ -21,7 +19,7 @@ export default function Flashcards(c){
     const [noClick, setNoClick] = useState(false);
     const [partialClick, setPartialClick] = useState(false);
     const [zapClick, setZapClick] = useState(false);
-    const [dataTestIcon, setDataTestIcon ] = useState("play-btn");
+    const [turnCard, setTurnCard] = useState (false)
     const [turnClick, setTurnClick] = useState();
 
 
@@ -33,7 +31,6 @@ export default function Flashcards(c){
     function noClick(){
       setColor("red")
       setIcon(icone_erro)
-      setDataTestIcon()
       setNoClick(true)
       setTurn(false)
       setTurnClick(false)
@@ -42,7 +39,6 @@ export default function Flashcards(c){
     function partialClick(){
       setColor("yellow")
       setIcon(icone_quase)
-      setDataTestIcon()
       setPartialClick(true)
       setTurn(false)
       setTurnClick(false)
@@ -51,11 +47,13 @@ export default function Flashcards(c){
     function zapClick(){
       setColor("green")
       setIcon(icone_certo)
-      setDataTestIcon("zap-icon")
       setZapClick(true)
       setTurn(false)
       setTurnClick(false)
     }
+
+    function turnCard(){
+      setTurnCard(true);
 }
     return(
       <>
@@ -82,7 +80,7 @@ export default function Flashcards(c){
         {question}
         </span>
         <img
-          src={turnCardImg}
+          src={seta_virar}
           alt="Seta para virar a carta"
           data-test="turn-btn"
           onClick={() => turnCard()}
@@ -168,3 +166,4 @@ const GreenButton = styled.button`
     background-color: rebeccapurple;
     border: none;
     ` 
+}

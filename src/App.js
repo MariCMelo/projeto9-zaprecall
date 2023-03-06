@@ -1,8 +1,4 @@
-
 import { useState } from 'react';
-
-import './App.css';
-
 
 import Header from './components/Header';
 import Deck from './components/Deck';
@@ -10,52 +6,17 @@ import Flashcards from './components/Flashcards';
 import Results from './components/Results';
 
 export default function App() {
-
-  // const [cards, setCards] = useState({});
-  // const [color, setColor] = useState ("black");
-  // const [selectedQuestion, setSelectedQuestion] = useState ()
-  
-
+  const [counter, setCounter] = useState (0);
   return (
-    <div className='corpo'>
-      <div className='container'>
-
-        <heade className='logo'>
-        <img src={logo} alt="Logo" />
-        <span>ZapRecall</span>
-
-        <div className='pergunta'>Pergunta 1
-        <ion-icon name="play-outline"></ion-icon>
-        <ion-icon name="checkmark-circle-outline"></ion-icon>
-        <ion-icon name="help-circle-outline"></ion-icon>
-        <ion-icon name="close-circle-outline"></ion-icon>
-        </div>
-
-        <div className='card-pergunta'>teste
-        <div className='container-button'>
-        <button>sim</button>
-        <button> quase</button>
-        <button>não</button></div>
-        
-        </div>
-        </heade>
-      </div>
-      <div className='rodape'> 0/5 concluidos</div>
-    </div>
-
-
+  <Container>
+  <Header/>
+  <Deck
+  />
+  <Results
+  counter={counter}
+  />
+  </Container> 
   )
-
-}
-
-
-{ <Container>
-  <Header></Header>
-  <Deck></Deck>
-  <Flashcards></Flashcards>
-  <Results></Results>
-</Container> }
-
 
 const Container = styled.div`
   max-width: 375px;
@@ -66,3 +27,5 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `
+
+}

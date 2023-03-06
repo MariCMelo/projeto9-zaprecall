@@ -13,7 +13,7 @@ const cards = [
 ];
 
 return (
-    <Deck className = "Deck">
+    <ContainerDeck className = "Deck">
       {cards.map((flashcard, index) => (
         <Flashcards
           key={index}
@@ -24,11 +24,11 @@ return (
           setCounter={setCounter}
         />
       ))}
-    </Deck>
+    </ContainerDeck>
   );
 };
 
-const Deck = styled.button`
+const ContainerDeck = styled.button`
 width: 300px;
 height: 65px;
 margin-bottom: 25px;

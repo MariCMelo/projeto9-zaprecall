@@ -3,12 +3,12 @@ import styled from "styled-components";
 export default function Results({counter}){
     return(
 
-    <Results>{counter}/8</Results>
+    <Footer>{counter}/8</Footer>
     )
-    
+   
 }
 
-const Results = styled.div`
+const Footer = styled.div`
 width: 375px;
 height: 70px;
 background-color: white;
