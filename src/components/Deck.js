@@ -1,3 +1,5 @@
+import Flashcards from "./Flashcards";
+
 import icone_certo from "../assets/icone_certo.png"
 import icone_quase from "../assets/icone_quase.png"
 import icone_erro from "../assets/icone_erro.png"
@@ -5,6 +7,11 @@ import icone_erro from "../assets/icone_erro.png"
 const icon = [icone_certo, icone_quase, icone_erro]
 
 export default function Deck(){
+    
+
+
+
+
     return(
     <button onClick={selectQuestion}> 
         <div>"Pergunta"[]</div>

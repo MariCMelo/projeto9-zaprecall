@@ -1,6 +1,11 @@
-export default function Results(){
-    return
-    <Results/>
+import styled from "styled-components";
+
+export default function Results({counter}){
+    return(
+
+    <Results>{counter}/8</Results>
+    )
+    
 }
 
 const Results = styled.div`
