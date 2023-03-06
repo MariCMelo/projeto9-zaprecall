@@ -1,26 +1,32 @@
 import Flashcards from "./Flashcards";
 
-import icone_certo from "../assets/icone_certo.png"
-import icone_quase from "../assets/icone_quase.png"
-import icone_erro from "../assets/icone_erro.png"
+export default function Deck(counter, setCounter){
+const cards = [
+	{ question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
+	{ question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces" },
+	{ question: "Componentes devem iniciar com __", answer: "Letra maiúscula" },
+	{ question: "Podemos colocar __ dentro do JSX", answer: "expressões" },
+	{ question: "O ReactDOM nos ajuda __", answer: "Interagindo com a DOM para colocar componentes React na mesma" },
+	{ question: "Usamos o npm para __", answer: "Gerenciar os pacotes necessários e suas dependências" },
+	{ question: "Usamos props para __", answer: "Passar diferentes informações para componentes" },
+	{ question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
+];
 
-const icon = [icone_certo, icone_quase, icone_erro]
-
-export default function Deck(){
-    
-
-
-
-
-    return(
-    <button onClick={selectQuestion}> 
-        <div>"Pergunta"[]</div>
-        <div>
-            <img src={icon[SelectedOption]}alt="Botão Selecionado"/>
-        </div>
-    </button>
-    )
-}
+return (
+    <Deck className = "Deck">
+      {cards.map((flashcard, index) => (
+        <Flashcards
+          key={index}
+          i={index + 1}
+          question={flashcard.question}
+          answer={flashcard.answer}
+          counter={counter}
+          setCounter={setCounter}
+        />
+      ))}
+    </Deck>
+  );
+};
 
 const Deck = styled.button`
 width: 300px;

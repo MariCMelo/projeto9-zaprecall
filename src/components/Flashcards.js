@@ -6,59 +6,119 @@ import icone_erro from "./components/assets/icone_erro.png";
 import icone_quase from "./components/assets/icone_quase.png";
 import seta_play from "./components/assets/seta_play.png";
 import seta_virar from "./components/assets/seta_virar.png";
+import icone_certo from "../assets/icone_certo.png"
+import icone_quase from "../assets/icone_quase.png"
+import icone_erro from "../assets/icone_erro.png"
 
 
-
-const cards = [
-	{ question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
-	{ question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces" },
-	{ question: "Componentes devem iniciar com __", answer: "Letra maiúscula" },
-	{ question: "Podemos colocar __ dentro do JSX", answer: "expressões" },
-	{ question: "O ReactDOM nos ajuda __", answer: "Interagindo com a DOM para colocar componentes React na mesma" },
-	{ question: "Usamos o npm para __", answer: "Gerenciar os pacotes necessários e suas dependências" },
-	{ question: "Usamos props para __", answer: "Passar diferentes informações para componentes" },
-	{ question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
-]
-
-
-
-
-export default function Flashcards(){
+export default function Flashcards(c){
     
-    const [color, setColor] = useState('black');
-  
-    const handleRedClick = () => {
-      setColor('red');
-    };
-  
-    const handleYellowClick = () => {
-      setColor('yellow');
-    };
-  
-    const handleGreenClick = () => {
-      setColor('green');
-    };
+    const [color, setColor] = useState("");
+    // const [textDecoration, setTextDecoration] = useState ("");
+    const [icon, setIcon] = useState ("");
+    const [openCard, setOpenCard] = useState(false);
+    const [closeCard, setCloseCard] = useState(true);
+    const [noClick, setNoClick] = useState(false);
+    const [partialClick, setPartialClick] = useState(false);
+    const [zapClick, setZapClick] = useState(false);
+    const [dataTestIcon, setDataTestIcon ] = useState("play-btn");
+    const [turnClick, setTurnClick] = useState();
 
-    
-    return(
-        <div ContainerFlashcards className='card-pergunta'>
-            cards[props.selectedQuestion]
-        <div className='container-button'>
 
-        <div ContainerButtons>
-            <RedButton onClick={handleRedClick}>Não lembrei</RedButton>
-            <YellowButton onClick={handleYellowClick}>Quase</YellowButton>
-            <GreenButton onClick={handleGreenClick}>Zap!</GreenButton>
-        </div ContainerButtons >
+    function start(){
+      setOpenCard(true);
+      setCloseCard(false);
+    }
 
-        </div>
-        </div ContainerFlashcards >
-    )
+    function noClick(){
+      setColor("red")
+      setIcon(icone_erro)
+      setDataTestIcon()
+      setNoClick(true)
+      setTurn(false)
+      setTurnClick(false)
+    }
 
+    function partialClick(){
+      setColor("yellow")
+      setIcon(icone_quase)
+      setDataTestIcon()
+      setPartialClick(true)
+      setTurn(false)
+      setTurnClick(false)
+    }
+
+    function zapClick(){
+      setColor("green")
+      setIcon(icone_certo)
+      setDataTestIcon("zap-icon")
+      setZapClick(true)
+      setTurn(false)
+      setTurnClick(false)
+    }
 }
+    return(
+      <>
 
+      <ContainerFlashcards data-test="flashcard">
+        turnClick={turnClick}
+        zapClick= {zapClick}
+        partialClicl={partialClicl}
+        wrongClick={wrongClick}
+        color= {color}
+        iconImg= {iconImg}
 
+        <FlashcardQuestion>
+          <span data-test="flashcard-text"> Pergunta {i} </span>
+          <img
+          data-test="play-btn"
+          src={iconImg} 
+          onClick={()=>start}
+          />
+        </FlashcardQuestion>
 
+        <ContainerQuestion>
+        <span>
+        {question}
+        </span>
+        <img
+          src={turnCardImg}
+          alt="Seta para virar a carta"
+          data-test="turn-btn"
+          onClick={() => turnCard()}
+        />
+        </ContainerQuestion>   
+
+        <ContainerAnswer data-test="flashcard">
+          <span>
+            {answer}
+          </span>
+
+          <div ContainerButtons>
+              <RedButton 
+              className="RedButton"    
+              data-test = "no-btn"
+              onClick={()=>setNo()}
+              >Não lembrei</RedButton>
+
+              <YellowButton  
+              className="YellowButton"        
+              data-test = "partial-btn"    
+              onClick={()=>setPartial()}
+              >Quase</YellowButton>
+
+              <GreenButton 
+              className="GreenButton"  
+              data-test = "zap-btn"          
+              onClick={()=>setZap()}
+              >Zap!</GreenButton>
+
+          </div>
+        </ContainerAnswer>
+        
+        </ContainerFlashcards>
+      </> 
+    )
 
 
 const ContainerFlashcards = styled.div `

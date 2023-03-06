@@ -1,12 +1,7 @@
 
 import { useState } from 'react';
+
 import './App.css';
-
-
-
-
-import party from "./components/assets/party.png"
-import sad from "./components/assets/sad.png"
 
 
 import Header from './components/Header';
@@ -16,24 +11,16 @@ import Results from './components/Results';
 
 export default function App() {
 
-  const [cards, setCards] = useState({});
-  const [color, setColor] = useState ("black");
-  const [selectedQuestion, setSelectedQuestion] = useState ()
+  // const [cards, setCards] = useState({});
+  // const [color, setColor] = useState ("black");
+  // const [selectedQuestion, setSelectedQuestion] = useState ()
   
-    
-
-
-
-
-
-
-
 
   return (
     <div className='corpo'>
       <div className='container'>
 
-        <div className='logo'>
+        <heade className='logo'>
         <img src={logo} alt="Logo" />
         <span>ZapRecall</span>
 
@@ -45,12 +32,13 @@ export default function App() {
         </div>
 
         <div className='card-pergunta'>teste
-        <div className='container-button'><button>sim</button>
+        <div className='container-button'>
+        <button>sim</button>
         <button> quase</button>
         <button>não</button></div>
         
         </div>
-        </div>
+        </heade>
       </div>
       <div className='rodape'> 0/5 concluidos</div>
     </div>
@@ -61,12 +49,12 @@ export default function App() {
 }
 
 
-<Container>
+{ <Container>
   <Header></Header>
   <Deck></Deck>
   <Flashcards></Flashcards>
   <Results></Results>
-</Container>
+</Container> }
 
 
 const Container = styled.div`
