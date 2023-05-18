@@ -2,24 +2,30 @@ import logo from "../assets/logo.png"
 import styled from "styled-components"
 import Flashcards from "./Flashcards"
 import Results from "./Results"
+import deck from "./Deck"
 
-// import Results from "./Results"
+export default function GamePage() {
+    return (
 
-
-export default function GamePage(){
-    return(
-
-        <GamePageContainer> 
+        <GamePageContainer>
             <HeaderContainer>
-                <img src= {logo} alt="Logo ZapRecall"/>
+                <img src={logo} alt="Logo ZapRecall" />
                 <h1>ZapRecall</h1>
             </HeaderContainer>
-            <Flashcards />
-            <Results />
-        </GamePageContainer> 
 
+            {deck.map((card, index) =>
+                <Flashcards
+                    key={card.question}
+                    card={card}
+                    index={index}
+                />
 
-        
+            )}
+
+            <Results
+                totalCards={deck.length}
+            />
+        </GamePageContainer>
     )
 }
 

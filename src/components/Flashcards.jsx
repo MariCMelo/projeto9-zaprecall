@@ -1,27 +1,61 @@
-import seta_play from "../assets/seta_play.png"
+import play from "../assets/seta_play.png"
+import turn from "../assets/seta_virar.png"
 import styled from "styled-components"
+import deck from "./Deck"
+import { useState } from "react"
 
+export default function ({ card, index }) {
+    const [start, setStart] = useState(false)
+    const [turned, setTurned] = useState(false)
+    const [answered, setAnswered] = useState(false)
 
-export default function () {
+    function openDeck() {
+        setStart(true)
+        console.log("X")
+    }
+
+    function showAnswer() {
+        setTurned(true)
+    }
+    
+    function answeredQuestion() {
+        setStart(false)
+        setAnswered(true)
+    }
+
     return (
         <>
-            <CloseFlashcardContainer>
-                <p>Pergunta 1</p>
-                <img src= {seta_play} alt="Icone de play" />
-            </CloseFlashcardContainer>
+            {!start ? (
+                <CloseFlashcardContainer>
+                    <p>Pergunta {index + 1}</p>
+                    <img onClick={openDeck} src={play} alt="Icone de play" />
+                </CloseFlashcardContainer>
 
-            <OpenFlashcardContainer>
-                
-                <ButtonsContainer>
-                    <button>1</button>
-                    <button>5</button>
-                    <button>1</button>
+            ) : (
 
-                </ButtonsContainer>
-            </OpenFlashcardContainer>
+                <OpenFlashcardContainer>
 
+                    {!turned ? (
+
+                        <>
+                            <p>{card.question}</p>
+                            <img onClick={showAnswer} src={turn} alt="Seta que vira o flashcard" />
+                        </>
+
+                    ) : (
+
+                        <>
+                            {card.answer}
+                            <ButtonsContainer>
+                                <button onClick={answeredQuestion}>Não Lembrei</button>
+                                <button onClick={answeredQuestion}>Quase não Lembrei</button>
+                                <button onClick={answeredQuestion}>Zap!</button>
+                            </ButtonsContainer>
+                        </>
+                    )}
+                </OpenFlashcardContainer>
+            )}
         </>
-
     )
 }
 

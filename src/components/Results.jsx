@@ -1,12 +1,11 @@
 import styled from "styled-components"
 
-export default function Results(){
+export default function Results({totalCards}){
     return (
         <ResultsContainer>
-           10 / 10 CONCLUÍDOS
+           {totalCards} / 10 CONCLUÍDOS
         </ResultsContainer>
-    )
-    
+    )  
 }
 
 const ResultsContainer = styled.div`
