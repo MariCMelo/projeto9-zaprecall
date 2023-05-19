@@ -3,10 +3,12 @@ import styled from "styled-components"
 import Flashcards from "./Flashcards"
 import Results from "./Results"
 import deck from "./Deck"
+import { useState } from "react"
 
 export default function GamePage() {
+    const [result, setResult] = useState(0);
+    
     return (
-
         <GamePageContainer>
             <HeaderContainer>
                 <img src={logo} alt="Logo ZapRecall" />
@@ -18,12 +20,15 @@ export default function GamePage() {
                     key={card.question}
                     card={card}
                     index={index}
+                    setResult={setResult}
                 />
 
             )}
 
             <Results
                 totalCards={deck.length}
+                result={result}
+                
             />
         </GamePageContainer>
     )

@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-export default function Results({totalCards}){
+export default function Results({totalCards, result}){
     return (
-        <ResultsContainer>
-           {totalCards} / 10 CONCLUÍDOS
+        <ResultsContainer data-test="footer">
+           {totalCards} / {result} CONCLUÍDOS
         </ResultsContainer>
     )  
 }
