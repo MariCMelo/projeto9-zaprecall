@@ -77,18 +77,21 @@ export default function Flashcard({ card, index, setResult }) {
                             <p data-test="flashcard-text">{card.answer}</p>
                             <ButtonsContainer>
                                 <RedButton
+                                    data-test="no-btn"
                                     onClick={() => handleButtonPress("#FF3030", redBtn)}
                                 >
                                     Não lembrei
                                 </RedButton>
 
                                 <YellowButton
+                                    data-test="partial-btn"
                                     onClick={() => handleButtonPress("#FF922E", yellowBtn)}
                                 >
                                     Quase não lembrei
                                 </YellowButton>
 
                                 <GreenButton
+                                    data-test="zap-btn"
                                     onClick={() => handleButtonPress("#2FBE34", greenBtn)}
                                 >
                                     Zap!
